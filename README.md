@@ -1,1 +1,0 @@
-# ganzyukv.github.io
