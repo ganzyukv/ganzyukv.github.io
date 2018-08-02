@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 02</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    let user = {
+        firstName: '',
+        lastName: '',
+        sex: '',
+        family: '',
+        age: ''
+    };
+
+    user.firstName = prompt('First name:', '');
+    user.lastName = prompt('Last name:', '');
+    user.age = prompt('How old are you?', '');
+    user.sex = confirm('You are a man:') ? 'M' : 'F';
+    user.family = confirm('Are you married?') ? 'Y' : 'N';
+
+    let msg = 'Hi, ' + user.firstName + '\n'
+        + 'You indicated that your age is '
+        + user.age + ' years old, you are a '
+        + (user.sex === 'M' ? 'man' : 'woman')
+        + ' and you are '
+        + (user.family === 'Y' ? '' : 'not')
+        + ' married';
+
+    alert(msg);
+</script>
+
+</body>
+</html>
