@@ -2,15 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
     <title>step 1</title>
+    <style type="text/css">
+        div {
+            cursor: pointer;
+            width: 200px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        div i {
+            margin-right: 5px;
+        }
+
+        .selected {
+            color: white;
+            background-color: cornflowerblue;
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .show {
+            display: block;
+        }
+
+        .level-2 {
+            margin-left: 10px
+        }
+    </style>
 </head>
-<body>
-    <div class-="directory level-1">directory 1</div>
-    <div class-="directory level-1">directory 2</div>
-    <div style="margin-left: 10px">directory 3</div>
-    <div style="margin-left: 10px">directory 4</div>
-    <div class-="directory level-1">directory 5</div>
-    <div class-="directory level-1">directory 6</div>
-    <div class-="directory level-1">directory 7</div>
+<body style="padding-left:10px ">
+
+<div class="folder"><i class="glyphicon glyphicon-folder-close"></i>directory 1</div>
+<div class="folder"><i class="glyphicon glyphicon-folder-close"></i>directory 2
+    <div class="level-2 folder"><i class="glyphicon glyphicon-folder-close"></i>directory 3</div>
+    <div class="level-2 file"><i class="glyphicon glyphicon-file"></i>file 1</div>
+    <div class="level-2 file"><i class="glyphicon glyphicon-file"></i>file 2</div>
+</div>
+<div class="folder"><i class="glyphicon glyphicon-folder-close"></i>directory 4</div>
+<div class="folder"><i class="glyphicon glyphicon-folder-close"></i>directory 5</div>
+<div class="folder"><i class="glyphicon glyphicon-folder-close"></i>directory 6</div>
+<div class="folder"><i class="glyphicon glyphicon-folder-close"></i>directory 7</div>
 </body>
 </html>
