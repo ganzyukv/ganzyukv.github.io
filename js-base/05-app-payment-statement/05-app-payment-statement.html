@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="./data.js" type="application/javascript"></script>
+    <script src="./index.js" type="application/javascript"></script>
+    <title>Payment statement</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-1">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="total"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-2">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Month</th>
+                <th>Avg.Payment</th>
+            </tr>
+            </thead>
+            <tbody id="avgMonth">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-3">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Department</th>
+                <th>Avg.Payment</th>
+            </tr>
+            </thead>
+            <tbody id="avgDepartment">
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<script>
+    let dataArr = getData(),
+        avgByMonth = getAvgBy(dataArr),
+        avgByDepartment = getAvgBy(dataArr, 1),
+        total = document.getElementById('total'),
+        avgMonth = document.getElementById('avgMonth'),
+        avgDepartment = document.getElementById('avgDepartment');
+
+    total.innerText = (getTotal(dataArr)).toFixed(2);
+
+    for (let prop in avgByMonth) {
+        avgMonth.innerHTML = avgMonth.innerHTML +
+            '<tr>' +
+            '<td>' + prop + '</td>' +
+            '<td>' + avgByMonth[prop].toFixed(2) + '</td>' +
+            '</tr>';
+    }
+
+    for (let prop in avgByDepartment) {
+        avgDepartment.innerHTML = avgDepartment.innerHTML +
+            '<tr>' +
+            '<td>' + prop + '</td>' +
+            '<td>' + avgByDepartment[prop].toFixed(2) + '</td>' +
+            '</tr>';
+    }
+</script>
+</body>
+</html>
