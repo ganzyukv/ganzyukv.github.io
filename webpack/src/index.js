@@ -1,37 +1,26 @@
-import {readFile} from './data.js';
+import {getData, getTotal, getAvgBy} from './function.js';
 
-function getData() {
-    let data = readFile();
-    let dataArr = data.split("\n");
-    dataArr = dataArr.map((el) => {
-        return el.split(',');
-    });
-    dataArr.shift();
-    return dataArr;
+let dataArr = getData(),
+    avgByMonth = getAvgBy(dataArr),
+    avgByDepartment = getAvgBy(dataArr, 1),
+    total = document.getElementById('total'),
+    avgMonth = document.getElementById('avgMonth'),
+    avgDepartment = document.getElementById('avgDepartment');
+
+total.innerText = (getTotal(dataArr)).toFixed(2);
+
+for (let prop in avgByMonth) {
+    avgMonth.innerHTML = avgMonth.innerHTML +
+        '<tr>' +
+        '<td>' + prop + '</td>' +
+        '<td>' + avgByMonth[prop].toFixed(2) + '</td>' +
+        '</tr>';
 }
 
-function getTotal(dataArr) {
-    return dataArr.reduce(function (sum, cur) {
-        return sum + (cur[3] * 1);
-    }, 0);
+for (let prop in avgByDepartment) {
+    avgDepartment.innerHTML = avgDepartment.innerHTML +
+        '<tr>' +
+        '<td>' + prop + '</td>' +
+        '<td>' + avgByDepartment[prop].toFixed(2) + '</td>' +
+        '</tr>';
 }
-
-function getAvgBy(dataArr, col = 0) {
-    let result = [];
-    dataArr.reduce(function (sum, cur) {
-        let current = cur[col]+'';
-        result[current] = isNaN(result[current]) ? 0 : result[current];
-        result[current] = result[current] + (cur[3] * 1);
-        return sum + (cur[3] * 1)
-    }, 0);
-
-    for(let prop in result){
-        let arr = dataArr.filter(function(el){
-            return el[col] == prop;
-        });
-        result[prop] = result[prop] / arr.length - 1;
-    }
-return result;
-}
-
-
